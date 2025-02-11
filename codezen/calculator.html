@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #008000, #004d00);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calculator-container {
+            background: white;
+            color: black;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            text-align: center;
+        }
+
+        .calculator-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .calculator-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .calculator-container button {
+            width: 100%;
+            padding: 10px;
+            background: #28a745;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .calculator-container button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <h2>Energy Calculator</h2>
+        <p>Appliance Wattage (W):</p>
+        <input type="number" id="power" placeholder="Enter wattage">
+        <p>Hours Used per Day:</p>
+        <input type="number" id="hours" placeholder="Enter hours">
+        <p>Days Used per Month:</p>
+        <input type="number" id="days" placeholder="Enter days">
+        <button onclick="calculateEnergy()">Calculate</button>
+        <p id="result"></p>
+        <a href="index.html" style="display: block; margin-top: 15px; color: #28a745; text-decoration: none;">Back to Home</a>
+    </div>
+    
+    <script>
+        function calculateEnergy() {
+            let power = document.getElementById("power").value;
+            let hours = document.getElementById("hours").value;
+            let days = document.getElementById("days").value;
+            if (power && hours && days) {
+                let energy = (power * hours * days) / 1000; // Convert to kWh
+                document.getElementById("result").innerText = "Energy Consumption: " + energy.toFixed(2) + " kWh per month";
+            } else {
+                document.getElementById("result").innerText = "Please enter valid values.";
+            }
+        }
+    </script>
+</body>
+</html>

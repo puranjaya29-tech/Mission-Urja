@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Tips</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #008000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: white;
+            color: black;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #006400;
+            color: white;
+        }
+        button {
+            background: #FFD700;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Energy Consumption Tips</h1>
+    <form id="energyForm">
+        <label for="name">Enter Your Name:</label>
+        <input type="text" id="name" required>
+        <br><br>
+        <label for="energy">Enter Energy Consumption (kWh):</label>
+        <input type="number" id="energy" required>
+        <br><br>
+        <button type="button" onclick="showTips()">Get Tips</button>
+    </form>
+    
+    <div id="tipsSection" style="display:none;">
+        <h2>Energy Saving Tips</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tip</th>
+                </tr>
+            </thead>
+            <tbody id="tipsTable"></tbody>
+        </table>
+    </div>
+    
+    <script>
+        function showTips() {
+            const energy = document.getElementById("energy").value;
+            const tipsTable = document.getElementById("tipsTable");
+            const tipsSection = document.getElementById("tipsSection");
+            tipsTable.innerHTML = "";
+            
+            let tips;
+            if (energy < 600) {
+                tips = [
+                    "Use LED bulbs instead of incandescent ones.",
+                    "Turn off lights when not in use.",
+                    "Unplug appliances when not in use.",
+                    "Use a power strip to easily disconnect multiple devices.",
+                    "Wash clothes in cold water to save heating energy.",
+                    "Use energy-efficient appliances.",
+                    "Air-dry clothes instead of using a dryer.",
+                    "Keep your refrigerator coils clean for efficiency.",
+                    "Use natural light during the daytime.",
+                    "Seal windows and doors to prevent energy loss."
+                ];
+            } else {
+                tips = [
+                    "Invest in solar panels to reduce dependency on the grid.",
+                    "Upgrade to high-efficiency HVAC systems.",
+                    "Install smart thermostats to optimize energy usage.",
+                    "Improve home insulation to reduce heating and cooling costs.",
+                    "Use double-glazed windows for better insulation.",
+                    "Reduce water heater temperature to save on heating costs.",
+                    "Opt for energy-efficient kitchen appliances.",
+                    "Limit air conditioning usage and rely on fans when possible.",
+                    "Schedule an energy audit to identify areas for improvement.",
+                    "Use renewable energy sources where possible."
+                ];
+            }
+            
+            tips.forEach((tip, index) => {
+                let row = `<tr><td>${index + 1}</td><td>${tip}</td></tr>`;
+                tipsTable.innerHTML += row;
+            });
+            
+            tipsSection.style.display = "block";
+        }
+    </script>
+</body>
+</html>
